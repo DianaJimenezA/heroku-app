@@ -50,22 +50,24 @@ app.get('/rev', function (req, res) {
    var ficha=turno;  //0 negro, 1=blanco
    for(var j=0; j<8; j++){
       for(var m=0;m<8;m++){
-         valCasilla= tablero[j][i];
+         valCasilla= tablero[j][m];
          if(valCasilla=='2'){
             //vacia
          }
          else if(valCasilla!=turno){
-            var indice = m-1;
             
+            var indice = m-1;
             if(indice<0){}
             else{
-               for(var z=indice; z<8; z++){
-                  if(tablero[j][z]==turno){
-                     arbol.push({
-                        posfila:j,
-                        poscolumna:indice,
-                        posvalor:0
-                     });
+               if(tablero[j][indice]==2){
+                  for(var z=indice; z<8; z++){
+                     if(tablero[j][z]==turno){
+                        arbol.push({
+                           posfila:j,
+                           poscolumna:indice,
+                           posvalor:0
+                        });
+                     }
                   }
                }
             }
@@ -85,13 +87,15 @@ app.get('/rev', function (req, res) {
            
             if(indice<0){}
             else{
-               for(var z=indice; z<8; z++){
-                  if(tablero[z][j]==turno){
-                     arbol.push({
-                        posfila:indice,
-                        poscolumna:j,
-                        posvalor:0
-                     });
+               if(tablero[indice][j]=='2'){
+                  for(var z=indice; z<8; z++){
+                     if(tablero[z][j]==turno){
+                        arbol.push({
+                           posfila:indice,
+                           poscolumna:j,
+                           posvalor:0
+                        });
+                     }
                   }
                }
             }
@@ -109,6 +113,7 @@ app.get('/rev', function (req, res) {
       [120, -20, 20, 5, 5, 20, -20, 120]
    ]
    //get min max
+   console.log(arbol);
    for(var i=0; i<arbol.length; i++){
       arbol[i].posvalor=matrizvalores[arbol[i].posfila][ arbol[i].poscolumna];
    }
