@@ -79,9 +79,10 @@ app.get('/rev', function (req, res) {
             //vacia
          }
          else if(valCasilla!=turno){
+           
             var indice = m-1;
             var col=j;
-            
+           
             if(indice<0){}
             else{
                for(var z=indice; z<8; z++){
@@ -129,11 +130,11 @@ app.get('/rev', function (req, res) {
    }
    for(var i=0; i<arbol2.length; i++){
       if(i==0){
-         nodo=arbol[i];   
+         nodo=arbol2[i];   
       }
      
-      if((i+1)!= arbol.length){
-         var nodo2=arbol[i+1];
+      if((i+1)!= arbol2.length){
+         var nodo2=arbol2[i+1];
          if(nodo2.posvalor>nodo.posvalor){
             nodo=nodo2;
          }
@@ -153,7 +154,6 @@ app.get('/rev', function (req, res) {
    '</body></html>'
    res.send(text);
 })
-
 
 var server = app.listen(port, function () {
    var host = server.address().address
