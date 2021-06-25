@@ -102,6 +102,39 @@ app.get('/rev', function (req, res) {
          }
       }
    }
+   console.log('ultimo for');
+   for(var j=7; j>=0; j--){
+      for(var m=7;m>=0;m--){
+         valCasilla= tablero[m][j];
+      
+         if(valCasilla=='2'){
+            //vacia
+         }
+         else if(valCasilla!=turno){
+           
+            var indice = m+1;
+            var col=j;
+            
+            if(indice>7){}
+            else{
+              
+               if(tablero[indice][j]=='2'){
+         
+                  for(var z=1; z<indice; z++){
+                     
+                     if(tablero[indice-z][j]==turno){
+                        arbol.push({
+                           posfila:indice,
+                           poscolumna:j,
+                           posvalor:0
+                        });
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
    var matrizvalores=[
       [120, -20, 20, 5, 5, 20, -20, 120],
       [-20, -40, -5,-5,-5,-5, -40, -20],
@@ -113,7 +146,7 @@ app.get('/rev', function (req, res) {
       [120, -20, 20, 5, 5, 20, -20, 120]
    ]
    //get min max
-   console.log(arbol);
+  
    for(var i=0; i<arbol.length; i++){
       arbol[i].posvalor=matrizvalores[arbol[i].posfila][ arbol[i].poscolumna];
    }
