@@ -68,6 +68,7 @@ app.get('/rev', function (req, res) {
                               posvalor: 0
                            });
                         }
+                        z=8;
                      }
                   }
                }
@@ -96,7 +97,9 @@ app.get('/rev', function (req, res) {
                               posvalor: 0
                            });
                         }
+                        z=8;
                      }
+                    
                   }
                }
             }
@@ -129,6 +132,7 @@ app.get('/rev', function (req, res) {
                               posvalor: 0
                            });
                         }
+                        z=indice;
                      }
                   }
                }
@@ -156,6 +160,7 @@ app.get('/rev', function (req, res) {
                               posvalor: 0
                            });
                         }
+                        z=0;
                      }
                   }
                }
