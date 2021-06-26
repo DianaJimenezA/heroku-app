@@ -60,6 +60,7 @@ app.get('/rev', function (req, res) {
                if (indice < 0) { }
                else {
                   if (tablero[j][indice] == 2) {
+                     var l=1;
                      for (var z = indice; z < 8; z++) {
                         if (tablero[j][z] == turno) {
                            arbol.push({
@@ -67,8 +68,11 @@ app.get('/rev', function (req, res) {
                               poscolumna: indice,
                               posvalor: 0
                            });
+                           if(l==2){
+                              l=l+1;
+                              z=8;
+                           }
                         }
-                        z=8;
                      }
                   }
                }
@@ -89,6 +93,7 @@ app.get('/rev', function (req, res) {
                if (indice < 0) { }
                else {
                   if (tablero[indice][j] == '2') {
+                     var l=1;
                      for (var z = indice; z < 8; z++) {
                         if (tablero[z][j] == turno) {
                            arbol.push({
@@ -97,7 +102,10 @@ app.get('/rev', function (req, res) {
                               posvalor: 0
                            });
                         }
-                        z=8;
+                        if(l==2){
+                           l=l+1;
+                           z=8;
+                        }
                      }
                     
                   }
@@ -122,7 +130,7 @@ app.get('/rev', function (req, res) {
                else {
 
                   if (tablero[indice][j] == '2') {
-
+                     var l=1;
                      for (var z = 1; z < indice; z++) {
 
                         if (tablero[indice - z][j] == turno) {
@@ -132,7 +140,10 @@ app.get('/rev', function (req, res) {
                               posvalor: 0
                            });
                         }
-                        z=indice;
+                        if(l==2){
+                           l=l+1;
+                           z=indice-2;
+                        }
                      }
                   }
                }
@@ -152,6 +163,7 @@ app.get('/rev', function (req, res) {
                if (indice <8) { }
                else {
                   if (tablero[j][indice] == 2) {
+                     var l=1;
                      for (var z = indice; z >= 0; z--) {
                         if (tablero[j][z] == turno) {
                            arbol.push({
@@ -160,7 +172,11 @@ app.get('/rev', function (req, res) {
                               posvalor: 0
                            });
                         }
-                        z=0;
+                        if(l==2){
+                           l=l+1;
+                           z=0;
+                        }
+                        
                      }
                   }
                }
