@@ -68,10 +68,10 @@ app.get('/rev', function (req, res) {
                               poscolumna: indice,
                               posvalor: 0
                            });
-                           if(l==2){
-                              l=l+1;
+                           if(l==3){
+                              
                               z=8;
-                           }
+                           }l=l+1;
                         }
                      }
                   }
@@ -79,6 +79,7 @@ app.get('/rev', function (req, res) {
             }
          }
       }
+      console.log(arbol);
       for (var j = 0; j < 8; j++) {
          for (var m = 0; m < 8; m++) {
             valCasilla = tablero[m][j];
@@ -102,10 +103,10 @@ app.get('/rev', function (req, res) {
                               posvalor: 0
                            });
                         }
-                        if(l==2){
-                           l=l+1;
+                        if(l==3){
+                         
                            z=8;
-                        }
+                        }  l=l+1;
                      }
                     
                   }
@@ -113,7 +114,7 @@ app.get('/rev', function (req, res) {
             }
          }
       }
-
+      console.log(arbol);
       for (var j = 7; j >= 0; j--) {
          for (var m = 7; m >= 0; m--) {
             valCasilla = tablero[m][j];
@@ -141,15 +142,16 @@ app.get('/rev', function (req, res) {
                            });
                         }
                         if(l==2){
-                           l=l+1;
+                           
                            z=indice-2;
-                        }
+                        }l=l+1;
                      }
                   }
                }
             }
          }
       }
+      console.log(arbol);
       //Obtencion de movimientos <-
       for (var j = 0; j < 8; j++) {
          for (var m = 7; m >= 0; m--) {
@@ -160,11 +162,13 @@ app.get('/rev', function (req, res) {
             else if (valCasilla != turno) {
 
                var indice = m + 1;
-               if (indice <8) { }
+               if (indice >8) { }
                else {
                   if (tablero[j][indice] == 2) {
                      var l=1;
+                     console.log('posfila:'+j +" poscolumna:"+indice);
                      for (var z = indice; z >= 0; z--) {
+                        
                         if (tablero[j][z] == turno) {
                            arbol.push({
                               posfila: j,
@@ -172,10 +176,10 @@ app.get('/rev', function (req, res) {
                               posvalor: 0
                            });
                         }
-                        if(l==2){
-                           l=l+1;
+                        if(l==3){
+                          
                            z=0;
-                        }
+                        } l=l+1;
                         
                      }
                   }
@@ -183,6 +187,7 @@ app.get('/rev', function (req, res) {
             }
          }
       }
+      console.log(arbol);
       var matrizvalores = [
          [120, -20, 20, 5, 5, 20, -20, 120],
          [-20, -40, -5, -5, -5, -5, -40, -20],
