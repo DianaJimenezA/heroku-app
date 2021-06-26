@@ -12,7 +12,7 @@ app.get('/rev', function (req, res) {
       poscolumna: 0,
       posvalor: 0
    };
-   var text="Proyecto 1 Clase IA";
+   var text = "Proyecto 1 Clase IA";
    console.log(turno);
    console.log(estado);
    if (turno != undefined && estado != undefined) {
@@ -60,7 +60,7 @@ app.get('/rev', function (req, res) {
                if (indice < 0) { }
                else {
                   if (tablero[j][indice] == 2) {
-                     var l=1;
+                     var l = 1;
                      for (var z = indice; z < 8; z++) {
                         if (tablero[j][z] == turno) {
                            arbol.push({
@@ -68,10 +68,10 @@ app.get('/rev', function (req, res) {
                               poscolumna: indice,
                               posvalor: 0
                            });
-                           if(l==3){
-                              
-                              z=8;
-                           }l=l+1;
+                           if (l == 3) {
+
+                              z = 8;
+                           } l = l + 1;
                         }
                      }
                   }
@@ -94,7 +94,7 @@ app.get('/rev', function (req, res) {
                if (indice < 0) { }
                else {
                   if (tablero[indice][j] == '2') {
-                     var l=1;
+                     var l = 1;
                      for (var z = indice; z < 8; z++) {
                         if (tablero[z][j] == turno) {
                            arbol.push({
@@ -103,12 +103,12 @@ app.get('/rev', function (req, res) {
                               posvalor: 0
                            });
                         }
-                        if(l==3){
-                         
-                           z=8;
-                        }  l=l+1;
+                        if (l == 3) {
+
+                           z = 8;
+                        } l = l + 1;
                      }
-                    
+
                   }
                }
             }
@@ -131,7 +131,7 @@ app.get('/rev', function (req, res) {
                else {
 
                   if (tablero[indice][j] == '2') {
-                     var l=1;
+                     var l = 1;
                      for (var z = 1; z < indice; z++) {
 
                         if (tablero[indice - z][j] == turno) {
@@ -141,10 +141,10 @@ app.get('/rev', function (req, res) {
                               posvalor: 0
                            });
                         }
-                        if(l==2){
-                           
-                           z=indice-2;
-                        }l=l+1;
+                        if (l == 2) {
+
+                           z = indice - 2;
+                        } l = l + 1;
                      }
                   }
                }
@@ -162,13 +162,13 @@ app.get('/rev', function (req, res) {
             else if (valCasilla != turno) {
 
                var indice = m + 1;
-               if (indice >8) { }
+               if (indice > 8) { }
                else {
                   if (tablero[j][indice] == 2) {
-                     var l=1;
-                     console.log('posfila:'+j +" poscolumna:"+indice);
+                     var l = 1;
+                     console.log('posfila:' + j + " poscolumna:" + indice);
                      for (var z = indice; z >= 0; z--) {
-                        
+
                         if (tablero[j][z] == turno) {
                            arbol.push({
                               posfila: j,
@@ -176,11 +176,89 @@ app.get('/rev', function (req, res) {
                               posvalor: 0
                            });
                         }
-                        if(l==3){
-                          
-                           z=0;
-                        } l=l+1;
-                        
+                        if (l == 3) {
+
+                           z = 0;
+                        } l = l + 1;
+
+                     }
+                  }
+               }
+            }
+         }
+      }
+      for (var j = 0; j < 8; j++) {
+         for (var m = 0; m < 8; m++) {
+            if (tablero[j][m] == 2) {
+               var filaUp = j - 1;
+               var colDer = m + 1;
+               var colizq = m - 1;
+               var filaDown = j + 1;
+               if (filaUp >= 0 && colizq >= 0) {
+                  var valCas = tablero[filaUp][colizq];
+                  if (valCas != turno && valCas!="2") {
+                     var filaUp2 = filaUp - 1;
+                     var colizq2 = colizq - 1;
+                     if (filaUp2 >= 0 && colizq2 >= 0) {
+                        var valCas2 = tablero[filaUp2][colizq2];
+                        if (valCas2 == turno) {
+                           arbol.push({
+                              posfila: j,
+                              poscolumna: m,
+                              posvalor: 0
+                           });
+                        }
+                     }
+                  }
+               }
+               if (filaUp >= 0 && colDer < 8) {
+                  var valCas = tablero[filaUp][colDer];
+                  if (valCas != turno&& valCas!="2") {
+                     var filaUp2 = filaUp - 1;
+                     var colDer2 = colDer + 1;
+                     if (filaUp2 >= 0 && colDer2 < 8) {
+                        var valCas2 = tablero[filaUp2][colDer2];
+                        if (valCas2 == turno) {
+                           arbol.push({
+                              posfila: j,
+                              poscolumna: m,
+                              posvalor: 0
+                           });
+                        }
+                     }
+                  }
+               }
+               if (filaDown < 8 && colizq >= 0) {
+                  var valCas = tablero[filaDown][colizq];
+                  if (valCas != turno&& valCas!="2") {
+                     var filaDown2 = filaDown + 1;
+                     var colizq2 = colizq - 1;
+                     if (filaDown2 < 8 && colizq2 >= 0) {
+                        var valCas2 = tablero[filaDown2][colizq2];
+                        if (valCas2 == turno) {
+                           arbol.push({
+                              posfila: j,
+                              poscolumna: m,
+                              posvalor: 0
+                           });
+                        }
+                     }
+                  }
+               }
+               if (filaDown < 8 && colDer < 8) {
+                  var valCas = tablero[filaDown][colDer];
+                  if (valCas != turno && valCas!="2") {
+                     var filaDown2 = filaDown + 1;
+                     var colDer2 = colizq + 1;
+                     if (filaDown2 < 8 && colDer2 < 8) {
+                        var valCas2 = tablero[filaDown2][colDer2];
+                        if (valCas2 == turno) {
+                           arbol.push({
+                              posfila: j,
+                              poscolumna: m,
+                              posvalor: 0
+                           });
+                        }
                      }
                   }
                }
