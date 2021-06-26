@@ -135,6 +135,33 @@ app.get('/rev', function (req, res) {
             }
          }
       }
+      //Obtencion de movimientos <-
+      for (var j = 0; j < 8; j++) {
+         for (var m = 7; m >= 0; m--) {
+            valCasilla = tablero[j][m];
+            if (valCasilla == '2') {
+               //vacia
+            }
+            else if (valCasilla != turno) {
+
+               var indice = m + 1;
+               if (indice <8) { }
+               else {
+                  if (tablero[j][indice] == 2) {
+                     for (var z = indice; z >= 0; z--) {
+                        if (tablero[j][z] == turno) {
+                           arbol.push({
+                              posfila: j,
+                              poscolumna: indice,
+                              posvalor: 0
+                           });
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
       var matrizvalores = [
          [120, -20, 20, 5, 5, 20, -20, 120],
          [-20, -40, -5, -5, -5, -5, -40, -20],
