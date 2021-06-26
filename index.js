@@ -60,20 +60,24 @@ app.get('/rev', function (req, res) {
                var indice = m - 1;
                if (indice < 0) { }
                else {
-                  if (tablero[j][indice] == 2) {
+                  if (tablero[j][indice] == '2') {
                      var l = 1;
+                    
                      for (var z = indice; z < 8; z++) {
+                        
                         if (tablero[j][z] == turno) {
+                           
                            arbol.push({
                               posfila: j,
                               poscolumna: indice,
                               posvalor: 0
                            });
-                           if (l == 3) {
-
-                              z = 8;
-                           } l = l + 1;
+                           
                         }
+                        if (l == 3) {
+
+                           z = 8;
+                        } l = l + 1;
                      }
                   }
                }
