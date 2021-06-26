@@ -46,8 +46,9 @@ app.get('/rev', function (req, res) {
          }
       }
       console.log(tablero);
-      //creacion de nodos
+      //creacion de nodos de posicion para arbol
       var ficha = turno;  //0 negro, 1=blanco
+      //Movimientos validos y creacion de arbol
       for (var j = 0; j < 8; j++) {
          for (var m = 0; m < 8; m++) {
             valCasilla = tablero[j][m];
@@ -276,12 +277,12 @@ app.get('/rev', function (req, res) {
          [-20, -40, -5, -5, -5, -5, -40, -20],
          [120, -20, 20, 5, 5, 20, -20, 120]
       ]
-      //get min max
+      //get min max con asignacion de valores a los nodos hoja
       console.log(arbol);
       for (var i = 0; i < arbol.length; i++) {
          arbol[i].posvalor = matrizvalores[arbol[i].posfila][arbol[i].poscolumna];
       }
-
+      //MinMax Eleccion
       var nodo = undefined;
       var arbol2 = [];
       for (var i = 0; i < arbol.length; i++) {
