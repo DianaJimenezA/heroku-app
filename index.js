@@ -213,7 +213,7 @@ app.get('/rev', function (req, res) {
                }
                if (filaUp >= 0 && colDer < 8) {
                   var valCas = tablero[filaUp][colDer];
-                  if (valCas != turno&& valCas!="2") {
+                  if (valCas != turno && valCas!="2") {
                      var filaUp2 = filaUp - 1;
                      var colDer2 = colDer + 1;
                      if (filaUp2 >= 0 && colDer2 < 8) {
@@ -230,7 +230,7 @@ app.get('/rev', function (req, res) {
                }
                if (filaDown < 8 && colizq >= 0) {
                   var valCas = tablero[filaDown][colizq];
-                  if (valCas != turno&& valCas!="2") {
+                  if (valCas != turno && valCas !="2") {
                      var filaDown2 = filaDown + 1;
                      var colizq2 = colizq - 1;
                      if (filaDown2 < 8 && colizq2 >= 0) {
@@ -249,7 +249,7 @@ app.get('/rev', function (req, res) {
                   var valCas = tablero[filaDown][colDer];
                   if (valCas != turno && valCas!="2") {
                      var filaDown2 = filaDown + 1;
-                     var colDer2 = colizq + 1;
+                     var colDer2 = colDer + 1;
                      if (filaDown2 < 8 && colDer2 < 8) {
                         var valCas2 = tablero[filaDown2][colDer2];
                         if (valCas2 == turno) {
